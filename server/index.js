@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 app.post("/refresh", (req, res) => {
     const refreshToken = req.body.refreshToken
     const spotifyApi = new SpotifyWebApi({
-      redirectUri: "http://localhost:3000",
+      redirectUri: `${process.env.URL}`,
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       refreshToken,
@@ -35,7 +35,7 @@ app.post("/refresh", (req, res) => {
   app.post("/login", (req, res) => {
     const code = req.body.code
     const spotifyApi = new SpotifyWebApi({
-      redirectUri: "http://localhost:3000",
+      redirectUri: `${process.env.URL}`,
       clientId: "aaecb28220b14865b52744934be57ccf",
       clientSecret: "8afca81083254015bffc4b1b74812b0a",
     })
@@ -60,5 +60,5 @@ app.post("/refresh", (req, res) => {
 const PORT = process.env.PORT || 8080
 
 app.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`)
+    console.log(`Running on port ${PORT} ${process.env.URL}`)
 })
