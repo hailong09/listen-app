@@ -1,7 +1,5 @@
 import SpotifyWebApi from 'spotify-web-api-js'
 const authUrl= "https://accounts.spotify.com/authorize"
-export const redirectUri = "http://localhost:3000" 
-
 
 export const spotify = new SpotifyWebApi()
 const scopes = [
@@ -19,7 +17,7 @@ const scopes = [
 ]
 
 
-export const loginUrl = `${authUrl}?client_id=${process.env.REACT_APP_CLIENTID}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=code`
+export const loginUrl = `${authUrl}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URL}&scope=${scopes.join("%20")}&response_type=code`
 
 
 
